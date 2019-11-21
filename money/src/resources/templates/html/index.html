@@ -1,0 +1,163 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>店铺管理-日进斗金收银软件</title>
+		<script type="text/javascript" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+		<style>
+				* {
+				margin: 0;
+				padding: 0;
+			}
+			/*a标签去线*/
+			
+			a {
+				color: #000000;
+			}
+			
+			a:hover {
+				color: #2F9833;
+				text-decoration: none;
+			}
+			
+			hr {
+				height: 0.5px;
+				background-color: #C7C7C7;
+				border: none;
+			}
+			/*底部*/
+			.footer {
+			    border-top: 1px solid #dfdfdf;
+			    float: left;
+			    padding: 20px 0;
+			    text-align: center;
+			    width: 100%;
+			}	
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="row" style="background-color:white">
+			<div style="margin: 0 auto; width: 1120px;">
+				<!--图片-->
+				<div class="col-md-4" style="height: 40px; line-height: 48px;">
+					<img th:src="@{/img/logo-7.png}" height="40px" />
+				</div>
+				<!--账号-->
+				<div class="col-md-1" style="height: 33px; line-height: 55px;">
+					<a href="Afterlogin">
+						账户
+					</a>
+				</div>
+				<!--账号-->
+				<div class="col-md-3" style="height: 33px; line-height: 55px;">
+					<a th:href="@{tiao?htmlt=store_management}">
+						实体店
+					</a>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<!--身体-->
+		<div class="loginbody" style="background-color:#F3F3F3;height:680px;margin-top: -30px;">
+			<br />
+			<br />
+			<br />
+			<div class="container" style="background-color: white;width:60%;height:80%;border: solid 1px #C7C7C7;">
+				<div class="row clearfix">
+					<div class="col-md-8" style="margin-top: 20px;">用户登录</div>
+					<div class="col-md-4 text-right" style="margin-top: 20px;">
+						<string>如需注册，请联系客服</string>
+						<img src="../img/taobaowangwang.png" height="20px" />
+					</div>
+				</div>
+				<hr />
+				<div class="nav flex-column justify-content-center bg-light" style=" height: 80%;">
+					<!--input的框登陆的！-->
+					<div class="col-md-offset-4 col-md-4" style="margin-top: 5%;">
+						<form class="form-horizontal"name="loginform" action="tologin" method="post">
+									<div class="form-group">
+										<div class="col-sm-12">
+											<input type="text" class="form-control" id="uname" name="uname" placeholder="账号喵">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-12">
+											<input type="password" class="form-control" id="upwd" name="upwd" placeholder="密码喵">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="inputPassword3" placeholder="输入验证码喵">
+										</div>
+										<label for="inputPassword3" class="col-sm-4 control-label">
+												<div id="checkCode" class="code"  onclick="createCode(4)" style="height: 34px;text-align: center;line-height: 34px;margin-top: -7px;"></div>
+										</label>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-6">
+											<div class="checkbox">
+												<label>
+                                                   <input type="checkbox"> <a>记住密码</a>
+                                                </label>
+											</div>
+										</div>
+										<div class="col-md-6 text-right" style="line-height: 33px;">
+										<a href="">注册账号</a>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-12">
+<a th:href="@{tiao?htmlt=login}"><button type="submit" class="btn btn-primary btn-ms btn-block" style="background-color: #44B549;border: solid #44B549;">确定</button></a>
+										</div>
+									</div>
+									
+								</form>
+					</div>
+					<!--！！！-->
+				</div>
+			</div>
+		</div>
+		<!--脚步-->
+		<div class="footer">
+			<p>Copyright © 2010-2019 POSO2O. All Rights Reserved.</p>
+		</div>
+
+	</body>
+	
+	
+<script type="text/javascript" th:src="@{/js/vue.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-1.12.4.js}"></script>
+<script type="text/javascript">
+//生成验证码的方法
+ function createCode(length) {
+     var code = "";
+     var codeLength = parseInt(length); //验证码的长度
+     var checkCode = document.getElementById("checkCode");
+     ////所有候选组成验证码的字符，当然也可以用中文的
+     var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+     'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); 
+     //循环组成验证码的字符串
+     for (var i = 0; i < codeLength; i++)
+     {
+         //获取随机验证码下标
+         var charNum = Math.floor(Math.random() * 62);
+         //组合成指定字符验证码
+         code += codeChars[charNum];
+     }
+     if (checkCode)
+     {
+         //为验证码区域添加样式名
+         checkCode.className = "code";
+         //将生成验证码赋值到显示区
+         checkCode.innerHTML = code;
+     }
+ }
+ createCode(4);
+ var checkCode = document.getElementById("checkCode").innerHTML;
+   </script>
+</html>

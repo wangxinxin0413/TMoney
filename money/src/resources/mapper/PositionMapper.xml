@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PositionMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Position" >
+    <id column="positionid" property="positionid" jdbcType="INTEGER" />
+    <result column="positionname" property="positionname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    positionid, positionname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from position
+    where positionid = #{positionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from position
+    where positionid = #{positionid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Position" >
+    insert into position (positionid, positionname)
+    values (#{positionid,jdbcType=INTEGER}, #{positionname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Position" >
+    insert into position
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="positionid != null" >
+        positionid,
+      </if>
+      <if test="positionname != null" >
+        positionname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="positionid != null" >
+        #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="positionname != null" >
+        #{positionname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Position" >
+    update position
+    <set >
+      <if test="positionname != null" >
+        positionname = #{positionname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where positionid = #{positionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Position" >
+    update position
+    set positionname = #{positionname,jdbcType=VARCHAR}
+    where positionid = #{positionid,jdbcType=INTEGER}
+  </update>
+</mapper>

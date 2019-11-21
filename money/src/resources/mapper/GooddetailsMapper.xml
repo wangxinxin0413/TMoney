@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.GooddetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Gooddetails" >
+    <id column="gooddetailsid" property="gooddetailsid" jdbcType="INTEGER" />
+    <result column="goodcolorid" property="goodcolorid" jdbcType="INTEGER" />
+    <result column="goodsizeid" property="goodsizeid" jdbcType="INTEGER" />
+    <result column="gooddetailscount" property="gooddetailscount" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    gooddetailsid, goodcolorid, goodsizeid, gooddetailscount, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from gooddetails
+    where gooddetailsid = #{gooddetailsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gooddetails
+    where gooddetailsid = #{gooddetailsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Gooddetails" >
+    insert into gooddetails (gooddetailsid, goodcolorid, goodsizeid, 
+      gooddetailscount, remark, remark1
+      )
+    values (#{gooddetailsid,jdbcType=INTEGER}, #{goodcolorid,jdbcType=INTEGER}, #{goodsizeid,jdbcType=INTEGER}, 
+      #{gooddetailscount,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Gooddetails" >
+    insert into gooddetails
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gooddetailsid != null" >
+        gooddetailsid,
+      </if>
+      <if test="goodcolorid != null" >
+        goodcolorid,
+      </if>
+      <if test="goodsizeid != null" >
+        goodsizeid,
+      </if>
+      <if test="gooddetailscount != null" >
+        gooddetailscount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gooddetailsid != null" >
+        #{gooddetailsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodcolorid != null" >
+        #{goodcolorid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsizeid != null" >
+        #{goodsizeid,jdbcType=INTEGER},
+      </if>
+      <if test="gooddetailscount != null" >
+        #{gooddetailscount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Gooddetails" >
+    update gooddetails
+    <set >
+      <if test="goodcolorid != null" >
+        goodcolorid = #{goodcolorid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsizeid != null" >
+        goodsizeid = #{goodsizeid,jdbcType=INTEGER},
+      </if>
+      <if test="gooddetailscount != null" >
+        gooddetailscount = #{gooddetailscount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gooddetailsid = #{gooddetailsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Gooddetails" >
+    update gooddetails
+    set goodcolorid = #{goodcolorid,jdbcType=INTEGER},
+      goodsizeid = #{goodsizeid,jdbcType=INTEGER},
+      gooddetailscount = #{gooddetailscount,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where gooddetailsid = #{gooddetailsid,jdbcType=INTEGER}
+  </update>
+</mapper>

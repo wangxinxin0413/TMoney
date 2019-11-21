@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.OrderdetailMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Orderdetail" >
+    <id column="detailid" property="detailid" jdbcType="INTEGER" />
+    <result column="goodid" property="goodid" jdbcType="INTEGER" />
+    <result column="orderid" property="orderid" jdbcType="INTEGER" />
+    <result column="goodname" property="goodname" jdbcType="VARCHAR" />
+    <result column="goodprice" property="goodprice" jdbcType="DOUBLE" />
+    <result column="goodnum" property="goodnum" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    detailid, goodid, orderid, goodname, goodprice, goodnum, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderdetail
+    where detailid = #{detailid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderdetail
+    where detailid = #{detailid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Orderdetail" >
+    insert into orderdetail (detailid, goodid, orderid, 
+      goodname, goodprice, goodnum, 
+      remark, remark1)
+    values (#{detailid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, 
+      #{goodname,jdbcType=VARCHAR}, #{goodprice,jdbcType=DOUBLE}, #{goodnum,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Orderdetail" >
+    insert into orderdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailid != null" >
+        detailid,
+      </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="orderid != null" >
+        orderid,
+      </if>
+      <if test="goodname != null" >
+        goodname,
+      </if>
+      <if test="goodprice != null" >
+        goodprice,
+      </if>
+      <if test="goodnum != null" >
+        goodnum,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailid != null" >
+        #{detailid,jdbcType=INTEGER},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="goodname != null" >
+        #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodprice != null" >
+        #{goodprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodnum != null" >
+        #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Orderdetail" >
+    update orderdetail
+    <set >
+      <if test="goodid != null" >
+        goodid = #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null" >
+        orderid = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="goodname != null" >
+        goodname = #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodprice != null" >
+        goodprice = #{goodprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodnum != null" >
+        goodnum = #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where detailid = #{detailid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Orderdetail" >
+    update orderdetail
+    set goodid = #{goodid,jdbcType=INTEGER},
+      orderid = #{orderid,jdbcType=INTEGER},
+      goodname = #{goodname,jdbcType=VARCHAR},
+      goodprice = #{goodprice,jdbcType=DOUBLE},
+      goodnum = #{goodnum,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where detailid = #{detailid,jdbcType=INTEGER}
+  </update>
+</mapper>

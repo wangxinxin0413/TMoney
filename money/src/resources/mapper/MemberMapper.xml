@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.MemberMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Member" >
+    <id column="Memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="Membername" property="membername" jdbcType="VARCHAR" />
+    <result column="Memberphone" property="memberphone" jdbcType="VARCHAR" />
+    <result column="Memberlevelid" property="memberlevelid" jdbcType="INTEGER" />
+    <result column="Memberpwd" property="memberpwd" jdbcType="VARCHAR" />
+    <result column="Membercount" property="membercount" jdbcType="INTEGER" />
+    <result column="MemberPrice" property="memberprice" jdbcType="DOUBLE" />
+    <result column="Membermoney" property="membermoney" jdbcType="DOUBLE" />
+    <result column="Memberintegral" property="memberintegral" jdbcType="INTEGER" />
+    <result column="Memberdizhi" property="memberdizhi" jdbcType="VARCHAR" />
+    <result column="Memberdizhis" property="memberdizhis" jdbcType="VARCHAR" />
+    <result column="Memberdizhiqu" property="memberdizhiqu" jdbcType="VARCHAR" />
+    <result column="Memberdizhiss" property="memberdizhiss" jdbcType="VARCHAR" />
+    <result column="Memberdate" property="memberdate" jdbcType="DATE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Memberid, Membername, Memberphone, Memberlevelid, Memberpwd, Membercount, MemberPrice, 
+    Membermoney, Memberintegral, Memberdizhi, Memberdizhis, Memberdizhiqu, Memberdizhiss, 
+    Memberdate, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where Memberid = #{memberid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from member
+    where Memberid = #{memberid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Member" >
+    insert into member (Memberid, Membername, Memberphone, 
+      Memberlevelid, Memberpwd, Membercount, 
+      MemberPrice, Membermoney, Memberintegral, 
+      Memberdizhi, Memberdizhis, Memberdizhiqu, 
+      Memberdizhiss, Memberdate, remark, 
+      remark1)
+    values (#{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, #{memberphone,jdbcType=VARCHAR}, 
+      #{memberlevelid,jdbcType=INTEGER}, #{memberpwd,jdbcType=VARCHAR}, #{membercount,jdbcType=INTEGER}, 
+      #{memberprice,jdbcType=DOUBLE}, #{membermoney,jdbcType=DOUBLE}, #{memberintegral,jdbcType=INTEGER}, 
+      #{memberdizhi,jdbcType=VARCHAR}, #{memberdizhis,jdbcType=VARCHAR}, #{memberdizhiqu,jdbcType=VARCHAR}, 
+      #{memberdizhiss,jdbcType=VARCHAR}, #{memberdate,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, 
+      #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Member" >
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
+        Memberid,
+      </if>
+      <if test="membername != null" >
+        Membername,
+      </if>
+      <if test="memberphone != null" >
+        Memberphone,
+      </if>
+      <if test="memberlevelid != null" >
+        Memberlevelid,
+      </if>
+      <if test="memberpwd != null" >
+        Memberpwd,
+      </if>
+      <if test="membercount != null" >
+        Membercount,
+      </if>
+      <if test="memberprice != null" >
+        MemberPrice,
+      </if>
+      <if test="membermoney != null" >
+        Membermoney,
+      </if>
+      <if test="memberintegral != null" >
+        Memberintegral,
+      </if>
+      <if test="memberdizhi != null" >
+        Memberdizhi,
+      </if>
+      <if test="memberdizhis != null" >
+        Memberdizhis,
+      </if>
+      <if test="memberdizhiqu != null" >
+        Memberdizhiqu,
+      </if>
+      <if test="memberdizhiss != null" >
+        Memberdizhiss,
+      </if>
+      <if test="memberdate != null" >
+        Memberdate,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="membername != null" >
+        #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberphone != null" >
+        #{memberphone,jdbcType=VARCHAR},
+      </if>
+      <if test="memberlevelid != null" >
+        #{memberlevelid,jdbcType=INTEGER},
+      </if>
+      <if test="memberpwd != null" >
+        #{memberpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="membercount != null" >
+        #{membercount,jdbcType=INTEGER},
+      </if>
+      <if test="memberprice != null" >
+        #{memberprice,jdbcType=DOUBLE},
+      </if>
+      <if test="membermoney != null" >
+        #{membermoney,jdbcType=DOUBLE},
+      </if>
+      <if test="memberintegral != null" >
+        #{memberintegral,jdbcType=INTEGER},
+      </if>
+      <if test="memberdizhi != null" >
+        #{memberdizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="memberdizhis != null" >
+        #{memberdizhis,jdbcType=VARCHAR},
+      </if>
+      <if test="memberdizhiqu != null" >
+        #{memberdizhiqu,jdbcType=VARCHAR},
+      </if>
+      <if test="memberdizhiss != null" >
+        #{memberdizhiss,jdbcType=VARCHAR},
+      </if>
+      <if test="memberdate != null" >
+        #{memberdate,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Member" >
+    update member
+    <set >
+      <if test="membername != null" >
+        Membername = #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberphone != null" >
+        Memberphone = #{memberphone,jdbcType=VARCHAR},
+      </if>
+      <if test="memberlevelid != null" >
+        Memberlevelid = #{memberlevelid,jdbcType=INTEGER},
+      </if>
+      <if test="memberpwd != null" >
+        Memberpwd = #{memberpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="membercount != null" >
+        Membercount = #{membercount,jdbcType=INTEGER},
+      </if>
+      <if test="memberprice != null" >
+        MemberPrice = #{memberprice,jdbcType=DOUBLE},
+      </if>
+      <if test="membermoney != null" >
+        Membermoney = #{membermoney,jdbcType=DOUBLE},
+      </if>
+      <if test="memberintegral != null" >
+        Memberintegral = #{memberintegral,jdbcType=INTEGER},
+      </if>
+      <if test="memberdizhi != null" >
+        Memberdizhi = #{memberdizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="memberdizhis != null" >
+        Memberdizhis = #{memberdizhis,jdbcType=VARCHAR},
+      </if>
+      <if test="memberdizhiqu != null" >
+        Memberdizhiqu = #{memberdizhiqu,jdbcType=VARCHAR},
+      </if>
+      <if test="memberdizhiss != null" >
+        Memberdizhiss = #{memberdizhiss,jdbcType=VARCHAR},
+      </if>
+      <if test="memberdate != null" >
+        Memberdate = #{memberdate,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Memberid = #{memberid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Member" >
+    update member
+    set Membername = #{membername,jdbcType=VARCHAR},
+      Memberphone = #{memberphone,jdbcType=VARCHAR},
+      Memberlevelid = #{memberlevelid,jdbcType=INTEGER},
+      Memberpwd = #{memberpwd,jdbcType=VARCHAR},
+      Membercount = #{membercount,jdbcType=INTEGER},
+      MemberPrice = #{memberprice,jdbcType=DOUBLE},
+      Membermoney = #{membermoney,jdbcType=DOUBLE},
+      Memberintegral = #{memberintegral,jdbcType=INTEGER},
+      Memberdizhi = #{memberdizhi,jdbcType=VARCHAR},
+      Memberdizhis = #{memberdizhis,jdbcType=VARCHAR},
+      Memberdizhiqu = #{memberdizhiqu,jdbcType=VARCHAR},
+      Memberdizhiss = #{memberdizhiss,jdbcType=VARCHAR},
+      Memberdate = #{memberdate,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where Memberid = #{memberid,jdbcType=INTEGER}
+  </update>
+  <select id="queryAllXinxi" resultType="com.accp.domain.MemberLO" >
+    SELECT m.`Memberid`,m.`Membername`,m.`Memberphone`,m.`Memberlevelid`,Memberlevelname,cishu,zongshu,m.Membermoney,m.`Memberintegral`,m.`Memberdate` FROM `member` m
+LEFT JOIN memberlevel ON m.`Memberlevelid`=memberlevel.`Memberlevelid`
+LEFT JOIN ((
+SELECT Memberid,COUNT(orderid)AS cishu,SUM(totalmoney) AS zongshu FROM `order`
+GROUP BY Memberid
+)AS dd) ON dd.Memberid=m.`Memberid`
+
+  </select>
+</mapper>

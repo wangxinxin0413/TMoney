@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.GoodcolorMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Goodcolor" >
+    <id column="goodcolorid" property="goodcolorid" jdbcType="INTEGER" />
+    <result column="goodcolorname" property="goodcolorname" jdbcType="VARCHAR" />
+    <result column="goodcololoveid" property="goodcololoveid" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goodcolorid, goodcolorname, goodcololoveid, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodcolor
+    where goodcolorid = #{goodcolorid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodcolor
+    where goodcolorid = #{goodcolorid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Goodcolor" >
+    insert into goodcolor (goodcolorid, goodcolorname, goodcololoveid, 
+      remark, remark1)
+    values (#{goodcolorid,jdbcType=INTEGER}, #{goodcolorname,jdbcType=VARCHAR}, #{goodcololoveid,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Goodcolor" >
+    insert into goodcolor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodcolorid != null" >
+        goodcolorid,
+      </if>
+      <if test="goodcolorname != null" >
+        goodcolorname,
+      </if>
+      <if test="goodcololoveid != null" >
+        goodcololoveid,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodcolorid != null" >
+        #{goodcolorid,jdbcType=INTEGER},
+      </if>
+      <if test="goodcolorname != null" >
+        #{goodcolorname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodcololoveid != null" >
+        #{goodcololoveid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Goodcolor" >
+    update goodcolor
+    <set >
+      <if test="goodcolorname != null" >
+        goodcolorname = #{goodcolorname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodcololoveid != null" >
+        goodcololoveid = #{goodcololoveid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goodcolorid = #{goodcolorid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Goodcolor" >
+    update goodcolor
+    set goodcolorname = #{goodcolorname,jdbcType=VARCHAR},
+      goodcololoveid = #{goodcololoveid,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where goodcolorid = #{goodcolorid,jdbcType=INTEGER}
+  </update>
+</mapper>

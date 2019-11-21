@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>店铺管理-日进斗金收银软件</title>
+		<link rel="stylesheet" th:href="@{/css/shop_type.css}">
+		<link rel="stylesheet" th:href="@{/css/base.css}">
+    	<link rel="stylesheet" th:href="@{/css/reset.css}">
+    	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    	<script th:src="@{/js/jquery-1.12.4.js}"></script>
+    	<script th:src="@{/js/bootstrap.js}"></script>
+    	<script th:src="@{/js/vue.js}"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			/*a标签去线*/
+			
+			a {
+				color: #000000;
+				text-decoration: none;
+			}
+			
+			a:hover {
+				color: #2F9833;
+				text-decoration: none;
+			}
+			
+			hr {
+				height: 0.5px;
+				background-color: #C7C7C7;
+			}
+			
+			ul {
+				list-style: none outside none;
+			}
+			/*最上方导航栏*/
+			
+			.navArea ul {
+				/* display: block; */
+				float: left;
+				width: 100%;
+				clear: both;
+			}
+			
+			li {
+				display: list-item;
+				text-align: -webkit-match-parent;
+			}
+			
+			.navArea ul li {
+				float: left;
+				width: 16.66%;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			
+			.navArea ul li a {
+				display: block;
+				margin-left: 4px;
+				margin-right: 4px;
+				line-height: 40px;
+				border: 1px solid #DDD;
+				border-radius: 4px;
+				font-size: 16px;
+				font-weight: 400;
+				text-align: center;
+				text-transform: uppercase;
+				vertical-align: middle;
+				text-decoration: none;
+			}
+			
+			.navArea ul li.current a {
+				color: #FFF;
+				background: #44b549;
+				border: 1px solid #44b549;
+				cursor: default;
+			}
+			
+			.navArea ul li a:hover {
+				border: 1px solid #44b549;
+			}
+			/*右侧导航栏*/
+			
+			.navList {
+				width: 100%;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			
+			.navList ul li {
+				display: block;
+				line-height: 50px;
+				border-bottom: 1px solid #DDD;
+				border-right: 1px solid #DDD;
+				font-size: 16px;
+				font-weight: 400;
+				text-align: center;
+				text-transform: uppercase;
+				vertical-align: middle;
+				text-decoration: none;
+			}
+			
+			.navList li.active a {
+				color: #44b549;
+				text-decoration: none;
+			}
+			
+			.navList li.active {
+				background: #FFF;
+				border-right: 1px solid #FFF;
+			}
+			
+			.navList li a {
+				display: block;
+				line-height: 52px;
+				font-size: 16px;
+				text-decoration: none;
+			}
+			/*底部*/
+			
+			.foot{
+			    background: #fafafa none repeat scroll 0 0;
+				border: 1px solid #dfdfdf;
+				/* float: left; */
+				padding: 20px 0;
+				text-align: center;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="row" style="background-color:white">
+			<div style="margin: 0 auto; width: 1120px;">
+				<!--图片-->
+				<div class="col-md-4" style="height: 33px; line-height: 48px;">
+					<img th:src="@{/img/logo-7.png}" height="40px" />
+				</div>
+				<!--账号-->
+				<div class="col-md-1" style="height: 33px; line-height: 55px;">
+					<a href="accountindex.html">
+						账户
+					</a>
+				</div>
+				<!--账号-->
+				<div class="col-md-2" style="height: 33px; line-height: 55px;">
+					<a href="">
+						实体店
+					</a>
+				</div>
+				<div class="col-md-4 text-right" style="height: 33px; line-height: 48px;">
+					<img th:src="@{/img/3.png}" height="40px" />
+					<span>18873307307</span>
+				</div>
+				<div class="col-md-1" style="margin-top: 13px;">
+					<a href="" style="color: #B3B3B3;">退出</a>
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<!--身体-->
+		<div class="container">
+			<div class="" style="margin-top: -20px;">
+				<!--临时高度-->
+				<!--第一排那些个小框框-->
+				<div class="navArea clearfix text-center">
+					<ul>
+						<li>
+							<a href="new_file.html">店铺</a>
+						</li>
+						<li class="current">
+							<a href="new_file1.html">商品</a>
+						</li>
+						<li>
+							<a href="#">库存</a>
+						</li>
+						<li>
+							<a href="#">网上订单</a>
+						</li>
+						<li>
+							<a href="#">报表</a>
+						</li>
+						<li>
+							<a href="#">会员</a>
+						</li>
+					</ul>
+				</div>
+				<!--下面的排的主要身体-->
+				<div class="container">
+					<div class="row" style="border: solid 1px #C7C7C7;margin-left: -9.5px;width: 99.2%;display: flex;justify-content: space-around;">
+						<div class="col-md-2">
+							<div class="navList text-center" style="margin:0 -15.5px;width:180px;background-color:#F3F3F3;height: 100%">
+								<ul style="margin-top: -10px;">
+									<li data-id="dianpo1"  class="active">
+										<a th:href="@{tiao?htmlt=good_splb}" >商品类别</a>
+									</li>
+									<li data-id="dianpo2">
+										<a th:href="@{tiao?htmlt=good_spgl}" >商品管理</a>
+									</li>
+									<li data-id="dianpo3">
+										<a th:href="@{tiao?htmlt=good_spsc}" >商品上传</a>
+									</li>
+									<li data-id="goods4">
+										<a th:href="@{tiao?htmlt=good_gys}" >供应商</a>
+									</li>
+									<li data-id="goods5">
+										<a th:href="@{tiao?htmlt=good_cg}" >采购</a>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-10 sw">
+							<div id='wqq' style="margin-left: -17px;width: 103.3%;" data-id='${data-id}'>
+								<!--子页面这里-->
+								<div class="rightarea clearfix t-vue1" style="margin-top: 1.8%;margin-bottom: 20px">
+									<div class="mainarea clearfix">
+										<div class="user_list_main clearfix">
+											<div class="user_list_body clearfix">
+												<div class="sub_title">商品类别</div>
+												<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="添加类别" style="float: right;position: relative;top: -23px;">添加类别</button>
+												<table class="clearfix settable">
+													<thead>
+														<tr>
+															<th width="20%">序号</th>
+															<th width="*">名称</th>
+															<th width="40%">操作</th>
+														</tr>
+													</thead>
+													<tbody>
+														<!-- <tr>
+															<td>1</td>
+															<td>1</td>
+															<td>
+																<a href="javascript:;">修改</a>
+																<a href="javascript:;">删除</a>
+															</td>
+														</tr> -->
+														<tr v-for="item,index in list">
+															<td>{{index+1}}</td>
+															<td>{{item.goodtypename}}</td>
+															<td>
+																<a href="javascript:;" v-on:click="upd(item)">修改</a>
+																<a href="javascript:;" v-on:click="del(item.goodtypeid,index)">删除</a>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+												<!--添加类别按钮-->
+<div class="modal" style="top:250px" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" style="width: 450px;" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">添供应商</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group row" style="margin: 20px;">
+          	<div class="col-md-2">
+          		<!--<label for="recipient-name" class="control-label">Recipient:</label>-->
+            	<label class="text-center" style="line-height: 45px;">名称</label>
+          	</div>
+          	<div class="col-md-9">
+            	<input type="text" class="form-control col-md-3" id="recipient-name"  style="margin-top: 5px;">
+          	</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+      	<div class="center-block" style="width: 28%;">
+      		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+       		<button type="button" id="sw" class="btn quding" style="background-color: #44B549;" v-on:click="sub()">确定</button>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--上面的是添加类别按钮-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!--脚步-->
+<div class="foot" style="margin-top: 15px;">
+		<p>Copyright © 2010-2019 POSO2O. All Rights Reserved.</p>
+</div>
+</body>
+<script type="text/javascript">
+//我来判断是新增还是修改
+var bool=0;
+/*模态框*/
+$('#exampleModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget) // Button that triggered the modal
+	  var recipient = button.data('whatever') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  modal.find('.modal-title').text(recipient)
+	  modal.find('.modal-body input').val(recipient)
+ })  
+/*  */	
+/*查看*/
+ var vue=new Vue({
+	 el:".t-vue1",
+	 data(){
+		 return {
+			list:[] 
+		 }
+	 },
+	 methods:{
+		 upd:function(item){//修改
+			 //alert(1)
+			 $('#exampleModal').modal('show');
+				  var button = $(event.relatedTarget) // 触发模式的按钮
+				  var recipient = button.data('whatever') // 从数据中提取信息-*属性
+				  // 如果需要，可以在这里启动AJAX请求（然后在回调中进行更新）。
+				  // 更新模态的内容。我们将在这里使用jQuery，但是您可以使用数据绑定库或其他方法。
+				  $('#exampleModalLabel').html("修改类别")
+				  $('#exampleModal').find('.modal-body input').val(item.goodtypename)
+				  bool=item.goodtypeid;
+		 },
+		 del:function(id,index){ //删除
+			 if (confirm("确认要删除？")) {
+				 this.list.splice(index,1)
+				 $.ajax({
+					 url:"[[@{/tjy/del?goodtypeid=}]]"+id,
+					 success:function(){
+						 
+					 }
+				 })
+		     }       
+		 },
+		 sub:function(){//添加
+			 //alert(bool)
+			if(bool==0){
+				var name=$("#recipient-name").val();
+			 	//alert(name)
+			     $.ajax({
+				 url:"[[@{/tjy/ins?name=}]]"+name,
+				 success:function(reulte){
+					 $('#exampleModal').modal('hide');
+					 $.ajax({
+						 url:"[[@{/tjy/all}]]",
+						 success:function(reulte){
+							 vue.list=reulte;
+						 }
+					 })
+				 }
+				 })
+			}else{
+				var name=$("#recipient-name").val();
+			$.ajax({
+				 url:"[[@{/tjy/upd?name=}]]"+name+"&id="+bool,
+				 success:function(reulte){
+					bool=0;
+					$('#exampleModal').modal('hide');
+					$.ajax({
+						url:"[[@{/tjy/all}]]",
+						success:function(reulte){
+								 vue.list=reulte;
+						}
+					})
+				 }
+			 })
+			} 
+		 }
+	 },
+	 created:function(){
+		 $.ajax({
+			 url:"[[@{/tjy/all}]]",
+			 success:function(reulte){
+				 vue.list=reulte;
+			 }
+		 })
+	 }
+ })
+</script>
+</html>

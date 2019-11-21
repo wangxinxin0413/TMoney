@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.AuthorityMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Authority" >
+    <id column="authorityid" property="authorityid" jdbcType="INTEGER" />
+    <result column="authorityname" property="authorityname" jdbcType="VARCHAR" />
+    <result column="authorityloveid" property="authorityloveid" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    authorityid, authorityname, authorityloveid, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from authority
+    where authorityid = #{authorityid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from authority
+    where authorityid = #{authorityid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Authority" >
+    insert into authority (authorityid, authorityname, authorityloveid, 
+      remark, remark1)
+    values (#{authorityid,jdbcType=INTEGER}, #{authorityname,jdbcType=VARCHAR}, #{authorityloveid,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Authority" >
+    insert into authority
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="authorityid != null" >
+        authorityid,
+      </if>
+      <if test="authorityname != null" >
+        authorityname,
+      </if>
+      <if test="authorityloveid != null" >
+        authorityloveid,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="authorityid != null" >
+        #{authorityid,jdbcType=INTEGER},
+      </if>
+      <if test="authorityname != null" >
+        #{authorityname,jdbcType=VARCHAR},
+      </if>
+      <if test="authorityloveid != null" >
+        #{authorityloveid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Authority" >
+    update authority
+    <set >
+      <if test="authorityname != null" >
+        authorityname = #{authorityname,jdbcType=VARCHAR},
+      </if>
+      <if test="authorityloveid != null" >
+        authorityloveid = #{authorityloveid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where authorityid = #{authorityid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Authority" >
+    update authority
+    set authorityname = #{authorityname,jdbcType=VARCHAR},
+      authorityloveid = #{authorityloveid,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where authorityid = #{authorityid,jdbcType=INTEGER}
+  </update>
+</mapper>
