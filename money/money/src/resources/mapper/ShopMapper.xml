@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.ShopMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Shop" >
+    <id column="shopid" property="shopid" jdbcType="INTEGER" />
+    <result column="shopname" property="shopname" jdbcType="VARCHAR" />
+    <result column="shopsynopsis" property="shopsynopsis" jdbcType="VARCHAR" />
+    <result column="shopcontacts" property="shopcontacts" jdbcType="VARCHAR" />
+    <result column="shoptelephone" property="shoptelephone" jdbcType="VARCHAR" />
+    <result column="shopsheng" property="shopsheng" jdbcType="VARCHAR" />
+    <result column="shopshi" property="shopshi" jdbcType="VARCHAR" />
+    <result column="shopqu" property="shopqu" jdbcType="VARCHAR" />
+    <result column="shopadd" property="shopadd" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    shopid, shopname, shopsynopsis, shopcontacts, shoptelephone, shopsheng, shopshi, 
+    shopqu, shopadd, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from shop
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shop
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Shop" >
+    insert into shop (shopid, shopname, shopsynopsis, 
+      shopcontacts, shoptelephone, shopsheng, 
+      shopshi, shopqu, shopadd, 
+      remark, remark1)
+    values (#{shopid,jdbcType=INTEGER}, #{shopname,jdbcType=VARCHAR}, #{shopsynopsis,jdbcType=VARCHAR}, 
+      #{shopcontacts,jdbcType=VARCHAR}, #{shoptelephone,jdbcType=VARCHAR}, #{shopsheng,jdbcType=VARCHAR}, 
+      #{shopshi,jdbcType=VARCHAR}, #{shopqu,jdbcType=VARCHAR}, #{shopadd,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Shop" >
+    insert into shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopid != null" >
+        shopid,
+      </if>
+      <if test="shopname != null" >
+        shopname,
+      </if>
+      <if test="shopsynopsis != null" >
+        shopsynopsis,
+      </if>
+      <if test="shopcontacts != null" >
+        shopcontacts,
+      </if>
+      <if test="shoptelephone != null" >
+        shoptelephone,
+      </if>
+      <if test="shopsheng != null" >
+        shopsheng,
+      </if>
+      <if test="shopshi != null" >
+        shopshi,
+      </if>
+      <if test="shopqu != null" >
+        shopqu,
+      </if>
+      <if test="shopadd != null" >
+        shopadd,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopid != null" >
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null" >
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsynopsis != null" >
+        #{shopsynopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="shopcontacts != null" >
+        #{shopcontacts,jdbcType=VARCHAR},
+      </if>
+      <if test="shoptelephone != null" >
+        #{shoptelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsheng != null" >
+        #{shopsheng,jdbcType=VARCHAR},
+      </if>
+      <if test="shopshi != null" >
+        #{shopshi,jdbcType=VARCHAR},
+      </if>
+      <if test="shopqu != null" >
+        #{shopqu,jdbcType=VARCHAR},
+      </if>
+      <if test="shopadd != null" >
+        #{shopadd,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Shop" >
+    update shop
+    <set >
+      <if test="shopname != null" >
+        shopname = #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsynopsis != null" >
+        shopsynopsis = #{shopsynopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="shopcontacts != null" >
+        shopcontacts = #{shopcontacts,jdbcType=VARCHAR},
+      </if>
+      <if test="shoptelephone != null" >
+        shoptelephone = #{shoptelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsheng != null" >
+        shopsheng = #{shopsheng,jdbcType=VARCHAR},
+      </if>
+      <if test="shopshi != null" >
+        shopshi = #{shopshi,jdbcType=VARCHAR},
+      </if>
+      <if test="shopqu != null" >
+        shopqu = #{shopqu,jdbcType=VARCHAR},
+      </if>
+      <if test="shopadd != null" >
+        shopadd = #{shopadd,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Shop" >
+    update shop
+    set shopname = #{shopname,jdbcType=VARCHAR},
+      shopsynopsis = #{shopsynopsis,jdbcType=VARCHAR},
+      shopcontacts = #{shopcontacts,jdbcType=VARCHAR},
+      shoptelephone = #{shoptelephone,jdbcType=VARCHAR},
+      shopsheng = #{shopsheng,jdbcType=VARCHAR},
+      shopshi = #{shopshi,jdbcType=VARCHAR},
+      shopqu = #{shopqu,jdbcType=VARCHAR},
+      shopadd = #{shopadd,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </update>
+</mapper>

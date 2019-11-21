@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>日进斗金-账户</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+     <link rel="stylesheet" th:href="@{/css/accountinfo.css}">
+    <link rel="stylesheet" th:href="@{/css/accountindex.css}">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <script th:src="@{/js/jquery-1.12.4.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+<div class="mainbody">
+    <!--头部-->
+    <div class="header clearfix" id="headTopic">
+        <div class="top">
+            <div class="divUser">
+                <a href="login" class="logout">退出</a>
+                <a href="javascript:;" class="head">
+                    <p class="type">
+                        <span>未认证</span>
+                    </p>
+                    <p class="nick">
+                        <span><input type="text" th:value="${session.user.uname}" style="border:0px;padding: -5px"></span>
+                    </p>
+                    <img src="" alt="">
+                </a>
+            </div>
+            <!--logo-->
+            <a href="javascript:;">
+                <h2 class="logo" title="POS店铺管理系统,全新O2O平板收银系统-日进斗金收银软件"></h2>
+            </a>
+            <ul class="nav-menu clearfix nav nav-tabs"> <!--nav-tabs将会显示对应active的内容-->
+                <li class="nav-item"  data-id="accountindex">
+                    <a href="Afterlogin">
+                        <span class="text">
+                            <span class="text-title">账户</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item" data-id="storeindex">
+                    <a th:href="@{tiao?htmlt=store_management}" >
+                        <span class="text">
+                            <span  class="text-title">实体店</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--内容 -->
+    <div class="content">
+        <div class="tab-content indexs">
+            <!--这里的内容根据点击的按钮按钮加载对应的html页面 由tab-pane active决定-->
+            <div class="area clearfix content-in">
+        <!--左边导航-->
+        <div class="navlist">
+            <ul class=" nav nav-tabs">
+                <li class="navindex current" data-id="accountinfo">
+                    <a href="javascript:;">账户信息</a>
+                </li>
+                <li class="">
+                    <a href="javascript:;">暂定中..</a>
+                </li>
+                <li class="">
+                    <a href="javascript:;">暂定中..</a>
+                </li>
+            </ul>
+        </div>
+        <!--右边显示区域  -->
+        <div class="accountcontent">
+            <div class="tab-content">
+                <!--根据左边显示右边的区域-->
+                 <div class="area-right">
+        <!--main-->
+        <div class="main-area clearfix">
+            <!--头-->
+            <div class="main-header">
+                <span>账户信息</span>
+            </div>
+            <!--form-->
+            <div class="bodyarea clearfix">
+                <div class="textarea clearfix">
+                    <!--头像-->
+                    <div class="userimg">
+                            <div class="hdimg">
+                                <div class="imgd">
+                                    <img src="" alt="" style="background:#666;">
+                                </div>
+                                <a href="javascript:;" class="upload">上传头像</a>  <!--上传头像按钮-->
+                                <input type="file" name="file" class="uploaduserimg">
+                            </div>
+                    </div>
+                    <!--信息修改form-->
+                    <form class="updateuser" action="updateuserinfomation" method="post">
+                        <div class="list">
+                            <p class="title">账户信息</p>
+                        </div>
+                        <div class="list">
+                            <label>行业:</label>
+                            <input class="form-control" type="text" name="tradename" id="tradename"  readonly="true" style="float: left;width: 190px"/>                            
+                        </div>
+                        <div class="list">
+                            <label>账号:</label>
+                            <input type="text" class="input-text" name="uname" th:value="${session.user.uname}">
+                        </div>
+                        <div class="list">
+                            <label>手机:</label>
+                            <input type="text" class="input-text" name="uphone">
+                            <span>已经/未绑定</span>
+                        </div>
+                        <div class="list">
+                            <label>密码:</label>
+                            <input type="submit" class="input-text" name="upwd" th:value="${session.user.upwd}">
+                            <a class="btn btn-success" href="javascript:;" style="margin-left: 5px;">修改</a>
+                       </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="foot" style="background: #fafafa none repeat scroll 0 0;border-top: 1px solid #dfdfdf;float: left;padding: 20px 0;text-align: center;width: 100%;">
+        <p style="color: #5e5e5e;">Copyright © 2010-2019 POSO2O. All Rights Reserved.</p>
+    </div>
+</div>    
+<script type="text/javascript" th:src="@{/js/vue.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-1.12.4.js}"></script>
+<script type="text/javascript">
+	 			
+</script>    
+</body>
+</html>

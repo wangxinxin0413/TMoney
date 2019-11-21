@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CarMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Car" >
+    <id column="carid" property="carid" jdbcType="INTEGER" />
+    <result column="Memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="totalmoney" property="totalmoney" jdbcType="DOUBLE" />
+    <result column="totalnum" property="totalnum" jdbcType="INTEGER" />
+    <result column="discount" property="discount" jdbcType="DOUBLE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    carid, Memberid, totalmoney, totalnum, discount, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where carid = #{carid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from car
+    where carid = #{carid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Car" >
+    insert into car (carid, Memberid, totalmoney, 
+      totalnum, discount, remark, 
+      remark1)
+    values (#{carid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{totalmoney,jdbcType=DOUBLE}, 
+      #{totalnum,jdbcType=INTEGER}, #{discount,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, 
+      #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Car" >
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="carid != null" >
+        carid,
+      </if>
+      <if test="memberid != null" >
+        Memberid,
+      </if>
+      <if test="totalmoney != null" >
+        totalmoney,
+      </if>
+      <if test="totalnum != null" >
+        totalnum,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="carid != null" >
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoney != null" >
+        #{totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalnum != null" >
+        #{totalnum,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Car" >
+    update car
+    <set >
+      <if test="memberid != null" >
+        Memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoney != null" >
+        totalmoney = #{totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalnum != null" >
+        totalnum = #{totalnum,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where carid = #{carid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Car" >
+    update car
+    set Memberid = #{memberid,jdbcType=INTEGER},
+      totalmoney = #{totalmoney,jdbcType=DOUBLE},
+      totalnum = #{totalnum,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where carid = #{carid,jdbcType=INTEGER}
+  </update>
+</mapper>

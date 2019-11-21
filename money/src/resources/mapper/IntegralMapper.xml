@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.IntegralMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Integral" >
+    <id column="integralid" property="integralid" jdbcType="INTEGER" />
+    <result column="Integralratio" property="integralratio" jdbcType="DOUBLE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    integralid, Integralratio, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral
+    where integralid = #{integralid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from integral
+    where integralid = #{integralid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Integral" >
+    insert into integral (integralid, Integralratio, remark, 
+      remark1)
+    values (#{integralid,jdbcType=INTEGER}, #{integralratio,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, 
+      #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Integral" >
+    insert into integral
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="integralid != null" >
+        integralid,
+      </if>
+      <if test="integralratio != null" >
+        Integralratio,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="integralid != null" >
+        #{integralid,jdbcType=INTEGER},
+      </if>
+      <if test="integralratio != null" >
+        #{integralratio,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Integral" >
+    update integral
+    <set >
+      <if test="integralratio != null" >
+        Integralratio = #{integralratio,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where integralid = #{integralid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Integral" >
+    update integral
+    set Integralratio = #{integralratio,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where integralid = #{integralid,jdbcType=INTEGER}
+  </update>
+  <select id="queryIntegral" resultType="com.accp.domain.Integral">
+  	select * from integral;
+  </select>
+</mapper>

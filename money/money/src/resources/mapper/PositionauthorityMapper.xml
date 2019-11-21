@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PositionauthorityMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Positionauthority" >
+    <result column="positionid" property="positionid" jdbcType="INTEGER" />
+    <result column="authorityid" property="authorityid" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.accp.domain.Positionauthority" >
+    insert into positionauthority (positionid, authorityid)
+    values (#{positionid,jdbcType=INTEGER}, #{authorityid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Positionauthority" >
+    insert into positionauthority
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="positionid != null" >
+        positionid,
+      </if>
+      <if test="authorityid != null" >
+        authorityid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="positionid != null" >
+        #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="authorityid != null" >
+        #{authorityid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

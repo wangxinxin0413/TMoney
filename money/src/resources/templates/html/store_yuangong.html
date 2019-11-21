@@ -1,0 +1,403 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>店铺管理-日进斗金收银软件</title>
+    	<link rel="stylesheet" th:href="@{/css/employee_management.css}">
+		<link rel="stylesheet" th:href="@{/css/base.css}">
+    	<link rel="stylesheet" th:href="@{/css/reset.css}">
+    	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    	<script th:src="@{/js/jquery-1.12.4.js}"></script>
+    	<script th:src="@{/js/bootstrap.js}"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			/*a标签去线*/
+			
+			a {
+				color: #000000;
+				text-decoration: none;
+			}
+			
+			a:hover {
+				color: #2F9833;
+				text-decoration: none;
+			}
+			
+			hr {
+				height: 0.5px;
+				background-color: #C7C7C7;
+			}
+			
+			ul {
+				list-style: none outside none;
+			}
+			/*最上方导航栏*/
+			
+			.navArea ul {
+				/* display: block; */
+				float: left;
+				width: 100%;
+				clear: both;
+			}
+			
+			li {
+				display: list-item;
+				text-align: -webkit-match-parent;
+			}
+			
+			.navArea ul li {
+				float: left;
+				width: 16.66%;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			
+			.navArea ul li a {
+				display: block;
+				margin-left: 4px;
+				margin-right: 4px;
+				line-height: 40px;
+				border: 1px solid #DDD;
+				border-radius: 4px;
+				font-size: 16px;
+				font-weight: 400;
+				text-align: center;
+				text-transform: uppercase;
+				vertical-align: middle;
+				text-decoration: none;
+			}
+			
+			.navArea ul li.current a {
+				color: #FFF;
+				background: #44b549;
+				border: 1px solid #44b549;
+				cursor: default;
+			}
+			
+			.navArea ul li a:hover {
+				border: 1px solid #44b549;
+			}
+			/*右侧导航栏*/
+			
+			.navList {
+				width: 100%;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			
+			.navList ul li {
+				display: block;
+				line-height: 50px;
+				border-bottom: 1px solid #DDD;
+				border-right: 1px solid #DDD;
+				font-size: 16px;
+				font-weight: 400;
+				text-align: center;
+				text-transform: uppercase;
+				vertical-align: middle;
+				text-decoration: none;
+			}
+			
+			.navList li.active a {
+				color: #44b549;
+				text-decoration: none;
+			}
+			
+			.navList li.active {
+				background: #FFF;
+				border-right: 1px solid #FFF;
+			}
+			
+			.navList li a {
+				display: block;
+				line-height: 52px;
+				font-size: 16px;
+				text-decoration: none;
+			}
+			/*底部*/
+			
+			.footer {
+				background: #fafafa none repeat scroll 0 0;
+				border-top: 1px solid #dfdfdf;
+				float: left;
+				padding: 20px 0;
+				text-align: center;
+				width: 100%;
+			}
+			
+			.editspan{
+					color: gray;font-size: small;margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="row" style="background-color:white">
+			<div style="margin: 0 auto; width: 1120px;">
+				<!--图片-->
+				<div class="col-md-4" style="height: 33px; line-height: 48px;">
+					<img src="../img/logo-7.png" height="40px" />
+				</div>
+				<!--账号-->
+				<div class="col-md-1" style="height: 33px; line-height: 55px;">
+					<a href="accountindex.html">
+						账户
+					</a>
+				</div>
+				<!--账号-->
+				<div class="col-md-2" style="height: 33px; line-height: 55px;">
+					<a href="">
+						实体店
+					</a>
+				</div>
+				<div class="col-md-4 text-right" style="height: 33px; line-height: 48px;">
+					<img th:src="@{../img/3.png}" height="40px" />
+					<span>18873307307</span>
+				</div>
+				<div class="col-md-1" style="margin-top: 13px;">
+					<a href="" style="color: #B3B3B3;">退出</a>
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<!--身体-->
+		<div class="container">
+			<div class="" style="height:610px;margin-top: -20px;">
+				<!--临时高度-->
+				<!--第一排那些个小框框-->
+				<div class="navArea clearfix text-center">
+					<ul>
+						<li class="current">
+							<a th:href="@{tiao?htmlt=store_management}" >店铺</a>
+						</li>
+						<li>
+							<a href="new_file1.html">商品</a>
+						</li>
+						<li>
+							<a href="#">库存</a>
+						</li>
+						<li>
+							<a href="#">网上订单</a>
+						</li>
+						<li>
+							<a href="#">报表</a>
+						</li>
+						<li>
+							<a href="#">会员</a>
+						</li>
+					</ul>
+				</div>
+				<!--下面的排的主要身体-->
+				<div class="container">
+					<div class="row" style="border: solid 1px #C7C7C7;margin-left: -10px;width: 99.3%;">
+						<div class="col-md-2">
+							<div class="navList clearfix text-center" style="height: 600px;margin:0 -15.5px;width:180px;background-color:#F3F3F3;">
+								<ul style="margin-top: -10px;">
+									<li data-id="dianpo1">
+										<a th:href="@{tiao?htmlt=store_management}" >店铺管理</a>
+									</li>
+									<li data-id="dianpo2">
+										<a th:href="@{tiao?htmlt=store_position}">职位权限</a>
+									</li>
+									<li data-id="dianpo3"  class="active">
+										<a th:href="@{tiao?htmlt=store_yuangong}" >员工管理</a>
+									</li>
+									<!-- <li data-id="goods4">
+										<a href="#">收银机支付宝收款</a>
+									</li>
+									<li data-id="goods5">
+										<a href="#">收银机微信收款</a>
+									</li> -->
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-10 sw">
+							<div id='wqq' style='margin-left: -17px;width: 103.3%;' data-id='${data-id}'>
+								<!--子页面这里-->
+								<div class="rightarea clearfix">
+									<div class="mainarea clearfix" id="yuangongmain">
+										<div class="mainhead">
+											<span class="title">员工管理</span>
+											<div class="searchArea">
+												<div class="btn-div">
+													<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#yuangongAddModal" style="float: right;position: relative;">
+														添加员工
+												</button>
+										<!-- 员工新增模态框 -->
+										<form class="Add">
+											<div id="yuangongAddModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		  										 <div class="modal-dialog modal-lg" role="document">
+		    										<div class="modal-content">
+		    									
+			      										<div class="modal-header">
+			        										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        										<h4 class="modal-title" id="myModalLabel">员工新增</h4>
+			      										</div>
+			      										<div class="modal-body">
+			      										  <table style="text-align: center;" id="addshoptb" >
+			        										<tr>
+			        											<td><span class="editspan">店铺</span></td>
+			        											<td>
+			        												<select class="form-control" style="margin: 5px;" name="shopname">
+			        													<option value="*">请选择店铺</option>
+			        													<option v-for="sl,index in shoplist" value="sl.shopname" v-text="sl.shopname"></option>
+			        												</select>
+			        											</td>
+			        											
+			        											<td><span class="editspan">职位</span></td>
+			        											<td>
+			        												<select class="form-control" style="margin: 5px;width: 320px" name="positionname">
+			        													<option value="*">请选择职位</option>
+			        													<option value="pl.positionname"  v-for="pl,index in positionlist" v-text="pl.positionname"></option>
+			        												</select>
+			        											</td>
+			        											
+			        										</tr>
+			        										<tr>
+			        											<td><span class="editspan">工号</span></td>
+			        											<td><input type="text" class="form-control"  style="margin: 5px;" name="uphone"></td>
+			        											<td><span class="editspan">姓名</span></td>
+			        											<td><input type="text" class="form-control" style="margin: 5px;width: 320px" name="uname"></td>
+			        										</tr>
+			        										<tr>
+			        											<td><span class="editspan">密码</span></td>
+			        											<td><textarea rows="2" cols="50"style="resize: none;margin-left: 5px; border:1px solid #C0C0C0;border-radius: 3px" name="upwd"></textarea></td>
+			        										</tr>
+			        									 </table>
+			     										</div>
+			      										<div class="modal-footer">
+			        										<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			        										<button type="submit" class="btn btn-primary">确认</button>
+			      										</div>
+			    									</div>
+		  										</div>
+											</div>
+										</form>	
+												</div>
+											</div>
+											<div class="list search">
+												<input class="inputtext" type="text" placeholder="查找">
+												<a href="javascript:;" class="search-btn"></a>
+											</div>
+												<div class="list">
+												<button type="button" class="btn btn-primary" style="float: right;position: relative;">
+														查询
+												</button>
+											</div>
+											<div class="list">
+												<select name="" id="" class="form-control">
+													<option value="*">请选择职位</option>
+													<option value="pl.positionname"  v-for="pl,index in positionlist" v-text="pl.positionname"></option>
+												</select>
+											</div>
+											<div class="list">
+												<select name="" id="" class="form-control">
+													<option value="*">请选择店铺</option>
+													<option value="sl.shopname"  v-for="sl,index in shoplist" v-text="sl.shopname"></option>
+												</select>
+											</div>
+										</div>
+										<div class="mainbody" id="tbyuangong">
+											<table class="settable table table-striped">
+												<thead>
+													<tr>
+														<th width="6%">序号</th>
+														<th width="*">所属店铺</th>
+														<th width="14%">职位</th>
+														<th width="14%">工号</th>
+														<th width="14%">姓名</th>
+														<th width="14%">登录密码</th>
+														<th width="12%">操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr v-for="y,index in list">
+															<td>{{y.uid}}</td>
+				   											<td>{{y.shopname}}</td>
+				   											<td>{{y.positionname}}</td>
+				   											<td>{{y.uphone}}</td>
+				   											<td>{{y.uname}}</td>
+				   											<td>{{y.upwd}}</td>
+															<td>
+																<a data-toggle="modal" data-target="#editShop">编辑</a>
+															</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--脚步-->
+		<div class="footer" style="margin-top: 15px;">
+			<p>Copyright © 2010-2019 POSO2O. All Rights Reserved.</p>
+		</div>
+	</body>
+	
+	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+	<script src="../js/province.js"></script>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript">
+	var vue=new Vue({
+		el:"#yuangongmain",
+		data:{
+			list:[],
+			shoplist:[],
+			positionlist:[]
+		},
+		methods:{
+			//查询
+			show:function(){
+				var that=this;
+				$.ajax({
+					url:"[[@{/ha/queryuangong}]]",
+					type:"post",
+					success:function(result){
+						that.list=result;
+					}
+				});
+			},
+			//查询店铺
+			queryshop:function(){
+				var that=this;
+				$.ajax({
+					url:"[[@{/ha/queryShop}]]",
+					type:"post",
+					success:function(result){
+						that.shoplist=result;
+					}
+				});
+		},
+		
+		//查询店铺
+		queryposition:function(){
+			var that=this;
+			$.ajax({
+				url:"[[@{/ha/queryposition}]]",
+				type:"post",
+				success:function(result){
+					that.positionlist=result;
+				}
+			});
+	},
+	
+		},
+		created:function(){
+			this.show();
+			this.queryshop();
+			this.queryposition();
+		}
+	})
+	</script>
+
+</html>

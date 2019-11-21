@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.MemberlevelMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Memberlevel" >
+    <id column="Memberlevelid" property="memberlevelid" jdbcType="INTEGER" />
+    <result column="Memberlevelname" property="memberlevelname" jdbcType="VARCHAR" />
+    <result column="MemberlevelDiscount" property="memberleveldiscount" jdbcType="DOUBLE" />
+    <result column="Membercount" property="membercount" jdbcType="DOUBLE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Memberlevelid, Memberlevelname, MemberlevelDiscount, Membercount, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from memberlevel
+    where Memberlevelid = #{memberlevelid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from memberlevel
+    where Memberlevelid = #{memberlevelid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Memberlevel" >
+    insert into memberlevel (Memberlevelid, Memberlevelname, MemberlevelDiscount, 
+      Membercount, remark, remark1
+      )
+    values (#{memberlevelid,jdbcType=INTEGER}, #{memberlevelname,jdbcType=VARCHAR}, #{memberleveldiscount,jdbcType=DOUBLE}, 
+      #{membercount,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Memberlevel" >
+    insert into memberlevel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberlevelid != null" >
+        Memberlevelid,
+      </if>
+      <if test="memberlevelname != null" >
+        Memberlevelname,
+      </if>
+      <if test="memberleveldiscount != null" >
+        MemberlevelDiscount,
+      </if>
+      <if test="membercount != null" >
+        Membercount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberlevelid != null" >
+        #{memberlevelid,jdbcType=INTEGER},
+      </if>
+      <if test="memberlevelname != null" >
+        #{memberlevelname,jdbcType=VARCHAR},
+      </if>
+      <if test="memberleveldiscount != null" >
+        #{memberleveldiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="membercount != null" >
+        #{membercount,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Memberlevel" >
+    update memberlevel
+    <set >
+      <if test="memberlevelname != null" >
+        Memberlevelname = #{memberlevelname,jdbcType=VARCHAR},
+      </if>
+      <if test="memberleveldiscount != null" >
+        MemberlevelDiscount = #{memberleveldiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="membercount != null" >
+        Membercount = #{membercount,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Memberlevelid = #{memberlevelid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Memberlevel" >
+    update memberlevel
+    set Memberlevelname = #{memberlevelname,jdbcType=VARCHAR},
+      MemberlevelDiscount = #{memberleveldiscount,jdbcType=DOUBLE},
+      Membercount = #{membercount,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where Memberlevelid = #{memberlevelid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.upplierMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.upplier" >
+    <id column="Supplierid" property="supplierid" jdbcType="INTEGER" />
+    <result column="Suppliername" property="suppliername" jdbcType="VARCHAR" />
+    <result column="Supplierna" property="supplierna" jdbcType="VARCHAR" />
+    <result column="Supplierpeople" property="supplierpeople" jdbcType="VARCHAR" />
+    <result column="Suppliermail" property="suppliermail" jdbcType="VARCHAR" />
+    <result column="Supplierphone" property="supplierphone" jdbcType="VARCHAR" />
+    <result column="Suppliershen" property="suppliershen" jdbcType="VARCHAR" />
+    <result column="Supplierqu" property="supplierqu" jdbcType="VARCHAR" />
+    <result column="Supplierjd" property="supplierjd" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.accp.domain.upplier" extends="BaseResultMap" >
+    <result column="Suppliershi" property="suppliershi" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Supplierid, Suppliername, Supplierna, Supplierpeople, Suppliermail, Supplierphone, 
+    Suppliershen, Supplierqu, Supplierjd, remark, remark1
+  </sql>
+  <sql id="Blob_Column_List" >
+    Suppliershi
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from supplier
+    where Supplierid = #{supplierid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier
+    where Supplierid = #{supplierid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.upplier" >
+    insert into supplier (Supplierid, Suppliername, Supplierna, 
+      Supplierpeople, Suppliermail, Supplierphone, 
+      Suppliershen, Supplierqu, Supplierjd, 
+      remark, remark1, Suppliershi
+      )
+    values (#{supplierid,jdbcType=INTEGER}, #{suppliername,jdbcType=VARCHAR}, #{supplierna,jdbcType=VARCHAR}, 
+      #{supplierpeople,jdbcType=VARCHAR}, #{suppliermail,jdbcType=VARCHAR}, #{supplierphone,jdbcType=VARCHAR}, 
+      #{suppliershen,jdbcType=VARCHAR}, #{supplierqu,jdbcType=VARCHAR}, #{supplierjd,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{suppliershi,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.upplier" >
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="supplierid != null" >
+        Supplierid,
+      </if>
+      <if test="suppliername != null" >
+        Suppliername,
+      </if>
+      <if test="supplierna != null" >
+        Supplierna,
+      </if>
+      <if test="supplierpeople != null" >
+        Supplierpeople,
+      </if>
+      <if test="suppliermail != null" >
+        Suppliermail,
+      </if>
+      <if test="supplierphone != null" >
+        Supplierphone,
+      </if>
+      <if test="suppliershen != null" >
+        Suppliershen,
+      </if>
+      <if test="supplierqu != null" >
+        Supplierqu,
+      </if>
+      <if test="supplierjd != null" >
+        Supplierjd,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="suppliershi != null" >
+        Suppliershi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="supplierid != null" >
+        #{supplierid,jdbcType=INTEGER},
+      </if>
+      <if test="suppliername != null" >
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierna != null" >
+        #{supplierna,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierpeople != null" >
+        #{supplierpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliermail != null" >
+        #{suppliermail,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierphone != null" >
+        #{supplierphone,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliershen != null" >
+        #{suppliershen,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierqu != null" >
+        #{supplierqu,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierjd != null" >
+        #{supplierjd,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliershi != null" >
+        #{suppliershi,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.upplier" >
+    update supplier
+    <set >
+      <if test="suppliername != null" >
+        Suppliername = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierna != null" >
+        Supplierna = #{supplierna,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierpeople != null" >
+        Supplierpeople = #{supplierpeople,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliermail != null" >
+        Suppliermail = #{suppliermail,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierphone != null" >
+        Supplierphone = #{supplierphone,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliershen != null" >
+        Suppliershen = #{suppliershen,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierqu != null" >
+        Supplierqu = #{supplierqu,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierjd != null" >
+        Supplierjd = #{supplierjd,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliershi != null" >
+        Suppliershi = #{suppliershi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Supplierid = #{supplierid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.accp.domain.upplier" >
+    update supplier
+    set Suppliername = #{suppliername,jdbcType=VARCHAR},
+      Supplierna = #{supplierna,jdbcType=VARCHAR},
+      Supplierpeople = #{supplierpeople,jdbcType=VARCHAR},
+      Suppliermail = #{suppliermail,jdbcType=VARCHAR},
+      Supplierphone = #{supplierphone,jdbcType=VARCHAR},
+      Suppliershen = #{suppliershen,jdbcType=VARCHAR},
+      Supplierqu = #{supplierqu,jdbcType=VARCHAR},
+      Supplierjd = #{supplierjd,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      Suppliershi = #{suppliershi,jdbcType=VARCHAR}
+    where Supplierid = #{supplierid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.upplier" >
+    update supplier
+    set Suppliername = #{suppliername,jdbcType=VARCHAR},
+      Supplierna = #{supplierna,jdbcType=VARCHAR},
+      Supplierpeople = #{supplierpeople,jdbcType=VARCHAR},
+      Suppliermail = #{suppliermail,jdbcType=VARCHAR},
+      Supplierphone = #{supplierphone,jdbcType=VARCHAR},
+      Suppliershen = #{suppliershen,jdbcType=VARCHAR},
+      Supplierqu = #{supplierqu,jdbcType=VARCHAR},
+      Supplierjd = #{supplierjd,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where Supplierid = #{supplierid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectidall" resultType="com.accp.domain.upplier">
+  	SELECT * FROM supplier WHERE 1=1 
+  	<if test="Suppliershen != '' and Suppliershen != null ">
+  	   AND Suppliershen=#{Suppliershen}
+  	</if>
+  	<if test="Suppliershi != '' and Suppliershi != null ">
+  	   AND Suppliershi=#{Suppliershi}
+  	</if>
+  	<if test="Suppliername != '' and Suppliername != null ">
+  	  AND Suppliername LIKE CONCAT('%',#{Suppliername},'%')
+  	</if>
+  	AND remark='1'
+  </select>
+</mapper>

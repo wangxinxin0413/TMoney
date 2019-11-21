@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.TradeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Trade" >
+    <id column="tradeid" property="tradeid" jdbcType="INTEGER" />
+    <result column="tradename" property="tradename" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tradeid, tradename, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade
+    where tradeid = #{tradeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from trade
+    where tradeid = #{tradeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Trade" >
+    insert into trade (tradeid, tradename, remark, 
+      remark1)
+    values (#{tradeid,jdbcType=INTEGER}, #{tradename,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{remark1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Trade" >
+    insert into trade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tradeid != null" >
+        tradeid,
+      </if>
+      <if test="tradename != null" >
+        tradename,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tradeid != null" >
+        #{tradeid,jdbcType=INTEGER},
+      </if>
+      <if test="tradename != null" >
+        #{tradename,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Trade" >
+    update trade
+    <set >
+      <if test="tradename != null" >
+        tradename = #{tradename,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tradeid = #{tradeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Trade" >
+    update trade
+    set tradename = #{tradename,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where tradeid = #{tradeid,jdbcType=INTEGER}
+  </update>
+</mapper>

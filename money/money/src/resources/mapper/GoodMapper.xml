@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.GoodMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Good" >
+    <id column="goodid" property="goodid" jdbcType="INTEGER" />
+    <result column="goodtypeid" property="goodtypeid" jdbcType="INTEGER" />
+    <result column="goodname" property="goodname" jdbcType="VARCHAR" />
+    <result column="goodphoto" property="goodphoto" jdbcType="VARCHAR" />
+    <result column="goodcode" property="goodcode" jdbcType="VARCHAR" />
+    <result column="goodbrand" property="goodbrand" jdbcType="VARCHAR" />
+    <result column="goodsum" property="goodsum" jdbcType="INTEGER" />
+    <result column="goodtext" property="goodtext" jdbcType="VARCHAR" />
+    <result column="goodTagprice" property="goodtagprice" jdbcType="DOUBLE" />
+    <result column="goodCostprice" property="goodcostprice" jdbcType="DOUBLE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goodid, goodtypeid, goodname, goodphoto, goodcode, goodbrand, goodsum, goodtext, 
+    goodTagprice, goodCostprice, remark, remark1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from good
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from good
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Good" >
+    insert into good (goodid, goodtypeid, goodname, 
+      goodphoto, goodcode, goodbrand, 
+      goodsum, goodtext, goodTagprice, 
+      goodCostprice, remark, remark1
+      )
+    values (#{goodid,jdbcType=INTEGER}, #{goodtypeid,jdbcType=INTEGER}, #{goodname,jdbcType=VARCHAR}, 
+      #{goodphoto,jdbcType=VARCHAR}, #{goodcode,jdbcType=VARCHAR}, #{goodbrand,jdbcType=VARCHAR}, 
+      #{goodsum,jdbcType=INTEGER}, #{goodtext,jdbcType=VARCHAR}, #{goodtagprice,jdbcType=DOUBLE}, 
+      #{goodcostprice,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Good" >
+    insert into good
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="goodtypeid != null" >
+        goodtypeid,
+      </if>
+      <if test="goodname != null" >
+        goodname,
+      </if>
+      <if test="goodphoto != null" >
+        goodphoto,
+      </if>
+      <if test="goodcode != null" >
+        goodcode,
+      </if>
+      <if test="goodbrand != null" >
+        goodbrand,
+      </if>
+      <if test="goodsum != null" >
+        goodsum,
+      </if>
+      <if test="goodtext != null" >
+        goodtext,
+      </if>
+      <if test="goodtagprice != null" >
+        goodTagprice,
+      </if>
+      <if test="goodcostprice != null" >
+        goodCostprice,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="goodtypeid != null" >
+        #{goodtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="goodname != null" >
+        #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodphoto != null" >
+        #{goodphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="goodcode != null" >
+        #{goodcode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodbrand != null" >
+        #{goodbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsum != null" >
+        #{goodsum,jdbcType=INTEGER},
+      </if>
+      <if test="goodtext != null" >
+        #{goodtext,jdbcType=VARCHAR},
+      </if>
+      <if test="goodtagprice != null" >
+        #{goodtagprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodcostprice != null" >
+        #{goodcostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Good" >
+    update good
+    <set >
+      <if test="goodtypeid != null" >
+        goodtypeid = #{goodtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="goodname != null" >
+        goodname = #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodphoto != null" >
+        goodphoto = #{goodphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="goodcode != null" >
+        goodcode = #{goodcode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodbrand != null" >
+        goodbrand = #{goodbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsum != null" >
+        goodsum = #{goodsum,jdbcType=INTEGER},
+      </if>
+      <if test="goodtext != null" >
+        goodtext = #{goodtext,jdbcType=VARCHAR},
+      </if>
+      <if test="goodtagprice != null" >
+        goodTagprice = #{goodtagprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodcostprice != null" >
+        goodCostprice = #{goodcostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Good" >
+    update good
+    set goodtypeid = #{goodtypeid,jdbcType=INTEGER},
+      goodname = #{goodname,jdbcType=VARCHAR},
+      goodphoto = #{goodphoto,jdbcType=VARCHAR},
+      goodcode = #{goodcode,jdbcType=VARCHAR},
+      goodbrand = #{goodbrand,jdbcType=VARCHAR},
+      goodsum = #{goodsum,jdbcType=INTEGER},
+      goodtext = #{goodtext,jdbcType=VARCHAR},
+      goodTagprice = #{goodtagprice,jdbcType=DOUBLE},
+      goodCostprice = #{goodcostprice,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR}
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </update>
+</mapper>
