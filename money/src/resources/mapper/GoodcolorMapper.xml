@@ -27,7 +27,7 @@
     values (#{goodcolorid,jdbcType=INTEGER}, #{goodcolorname,jdbcType=VARCHAR}, #{goodcololoveid,jdbcType=INTEGER}, 
       #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.domain.Goodcolor" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="goodcolorid" parameterType="com.accp.domain.Goodcolor" >
     insert into goodcolor
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="goodcolorid != null" >

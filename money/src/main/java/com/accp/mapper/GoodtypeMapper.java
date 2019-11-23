@@ -21,4 +21,7 @@ public interface GoodtypeMapper {
     
     @Select("SELECT * FROM `goodtype`")
     List<Goodtype> selectAll();
+    
+    @Select("SELECT * FROM `goodtype` where goodtypename=#{goodtypename}")
+    Goodtype selectname(String goodtypename);
 }

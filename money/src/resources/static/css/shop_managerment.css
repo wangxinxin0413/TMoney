@@ -31,8 +31,8 @@
 }
 .list{
     float: right;
-    margin-left: 6px;
-    margin-right: 6px;
+  margin-left: 6px;
+    margin-right: 6px; 
 }
 .search{
     border: 1px solid #e7e7eb;

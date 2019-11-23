@@ -130,6 +130,9 @@
 				text-align: center;
 				width: 100%;
 			}
+			.table > thead > tr > td.info, .table > tbody > tr > td.info, .table > tfoot > tr > td.info, .table > thead > tr > th.info, .table > tbody > tr > th.info, .table > tfoot > tr > th.info, .table > thead > tr.info > td, .table > tbody > tr.info > td, .table > tfoot > tr.info > td, .table > thead > tr.info > th, .table > tbody > tr.info > th, .table > tfoot > tr.info > th {
+    background-color: #F3F3F3;
+}
 		</style>
 	</head>
 
@@ -192,7 +195,7 @@
 				</div>
 				<!--下面的排的主要身体-->
 				<div class="container">
-					<div class="row" style="border: solid 1px #C7C7C7;margin-left: -10px;width: 99.3%;display: flex;justify-content: space-around;">
+					<div class="row" style="border: solid 1px #C7C7C7;margin-left: -9px;width: 99.3%;display: flex;justify-content: space-around;">
 						<div class="col-md-2">
 							<div class="navList clearfix text-center" style="margin:0 -15.5px;width:180px;background-color:#F3F3F3;height: 100%">
 								<ul style="margin-top: -10px;" >
@@ -215,81 +218,132 @@
 							</div>
 						</div>
 						<div class="col-md-10 vue_cg">
-							<div id='wqq' style='margin-left: -17px;width: 103.3%;' data-id='${data-id}'>
-								<!--子页面这里-->
-								<div class="rightarea clearfix">
-									<div class="mainarea clearfix">
-										<div class="mainhead">
-											<span class="title">采购单</span>
-											<div class="searchArea">
-												<div class="btn-div">
-													<a th:href="@{tiao?htmlt=good_cg_add}" class="btn btn-success">
-														新建采购单
-													</a>
-												</div>
-											</div>
-
-											<div class="list search">
-												<input class="inputtext" type="text" placeholder="查找">
-												<a href="javascript:;" class="search-btn"></a>
-											</div>
-											<div class="list">
-												<select name="" id="" class="form-control">
-													<option value="请选择城市">全部店铺</option>
-													<option v-for="item in dp" :value="item.shopid">{{item.shopname}}</option>
-												</select>
-											</div>
-
-											<div class="list">
-												<input type="date" class="form-control">
-											</div>
-											<div class="list">
-												-
-											</div>
-											<div class="list">
-												<input type="date" class="form-control">
-											</div>
-										</div>
-										<div class="mainbody">
-											<table class="settable table table-striped">
-												<thead>
-													<tr>
-														<th width="4%">序号</th>
-														<th width="6%">审核</th>
-														<th width="14%">采购单号</th>
-														<th width="10%">交货期</th>
-														<th width="16%">供应商</th>
-														<th width="6%">数量</th>
-														<th width="8%">金额</th>
-														<th width="*">备注</th>
-														<th width="12%">操作</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>
-															1
-														</td>
-														<td>1
-														</td>
-														<td>1
-														</td>
-														<td>1
-														</td>
-														<td>1</td>
-														<td>1</td>
-														<td>1</td>
-														<td>1</td>
-														<td>
-															<a href="javascript:;">删除</a>
-															<a href="javascript:;">编辑</a>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
+							  <!--  -->
+							  <div class="row">
+				<div id="tab_yggl" class="tal_none2">
+					<div class="row" style="height:50px;line-height:52px;margin-bottom:10px;margin-left: 5px;margin-right:15px;border-bottom: 1px solid #e7e7eb;">
+						<div style="padding-left: 0;float: left;">新建采购单</div>
+						<div style="float: right;width: 80%;">
+							<div style="text-align: right;margin-right: 10px;">
+								<input type="text" class="form-control" id="inputEmail3" placeholder="请输入货号或条码+回车 确认" style="width: 32.50%; display: inline-block;">
+								<a class="glyphicon glyphicon-search" style="margin-left: -28px;cursor: pointer;"></a>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-bottom:20px;margin-left: 5px;margin-right:15px;">
+						<form class="">
+							<div style="padding-bottom: 10px;width: 100%;overflow:hidden;margin-left: 4px;">
+								<div style="float: left;width: 25%;">
+									<label>单 号</label>
+									<input type="text" class="form-control" style="display: inline-block; width: 78%;">
 								</div>
+								<div style="float: left;width: 25%;">
+									<label>交 期</label>
+									<input type="date" class="form-control" style="display: inline-block; width: 78%;">
+								</div>
+								<div style="float: left;width: 25%;">
+									<label>供应商</label>
+									<select class="form-control" style="display: inline-block;width: 78%;">
+									  <option>请选择供应商</option>
+									</select>
+								</div>
+								<div style="float: left;width: 25%;">
+									<label>制表人</label>
+									<select class="form-control" style="display: inline-block;width: 78%;">
+									  <option>18610249685</option>
+									</select>
+								</div>
+							</div>	
+							<div style="float: left;width: 100%;margin-left: 4px;">
+								<label>备 注</label>
+								<input type="text" class="form-control" style="display: inline-block; width: 95.15%;">
+							</div>
+						</form>
+					</div>
+					<div class="row" style="margin-right: 15px;margin-left:5px;">
+						<table class="table table-bordered table-hover table-striped">
+							<thead align="center">
+								<tr class="info">
+									<td width="4%">货号</td>
+									<td width="5%">条码</td>
+									<td width="12%">产品名称</td>
+									<td width="10%">规格</td>
+									<td width="8%">成本价</td>
+									<td width="6%">数量</td>
+									<td width="6%">金额</td>
+								</tr>
+							</thead>
+							<tbody align="center">
+								<tr>
+									
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="7">
+										<div style="float: right;line-height: 38px;padding-right: 14px;">
+											金额<span style="color: red;">0.00</span>
+										</div>
+										<div style="float: right;line-height: 38px;padding-right: 14px;">
+											合计<span style="color: red;">0</span>件
+										</div>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+					<div class="row" style="margin-right: 15px;padding-left: 5px;">
+						<div class="col-md-2">
+							<span style="color: #44b549;cursor: pointer;" data-toggle="modal" data-target="#myModal">+ 添加商品</span>
+						</div>
+						<div style="text-align: right;">
+							<button type="button" class="btn btn-default" style="width: 8%;">清空</button>
+							<button type="button" class="btn btn-success" style="width: 8%;">提交</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div style="width: 75%;" class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">选择商品</h4>
+		            </div>
+		            <div class="modal-body" style="padding:50px">
+		            	<table class="table table-bordered table-hover table-striped">
+							<thead align="center">
+								<tr class="info">
+									<td width="6%"><input type="checkbox" name="" /></td>
+									<td width="6%">货码/条码</td>
+									<td width="10%">商品</td>
+									<td width="15%">规格</td>
+									<td width="10%">单价</td>
+									<td width="10%">库存</td>
+								</tr>
+							</thead>
+							<tbody align="center">
+								<tr>
+									<td><input type="checkbox" name="" /></td>
+									<td>612841444</td>
+									<td>绿色卫衣</td>
+									<td>--</td>
+									<td>229.00</td>
+									<td>3</td>
+								</tr>
+							</tbody>
+						</table>
+		            </div>
+		            <div class="modal-footer" style="text-align: center;">
+		                <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 16.66%;">取消</button>
+		                <button type="button" class="btn btn-success" style="width: 16.66%;">确认</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+							  <!--  -->
 							</div>
 						</div>
 					</div>
@@ -319,7 +373,6 @@
 						 url:"[[@{/tjy_spgl/shops}]]",
 						 dataType:"json",
 						 success:function(reulte){
-							 alert(11)
 							  vue.dp=reulte;
 							 }
 						 })

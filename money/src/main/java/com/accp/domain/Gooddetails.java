@@ -2,19 +2,30 @@ package com.accp.domain;
 
 public class Gooddetails {
     private Integer gooddetailsid;
+    
+    private Integer goodid;
 
     private Integer goodcolorid;
 
     private Integer goodsizeid;
+    
+    private String goodtiaoxinma;	
 
     private Integer gooddetailscount;
     
-    private Integer goodid;
+    private String remark;
 
     private String remark1;
-    
 
-    public Integer getGoodid() {
+	public Integer getGooddetailsid() {
+		return gooddetailsid;
+	}
+
+	public void setGooddetailsid(Integer gooddetailsid) {
+		this.gooddetailsid = gooddetailsid;
+	}
+
+	public Integer getGoodid() {
 		return goodid;
 	}
 
@@ -22,43 +33,54 @@ public class Gooddetails {
 		this.goodid = goodid;
 	}
 
-	public Integer getGooddetailsid() {
-        return gooddetailsid;
-    }
+	public Integer getGoodcolorid() {
+		return goodcolorid;
+	}
 
-    public void setGooddetailsid(Integer gooddetailsid) {
-        this.gooddetailsid = gooddetailsid;
-    }
+	public void setGoodcolorid(Integer goodcolorid) {
+		this.goodcolorid = goodcolorid;
+	}
 
-    public Integer getGoodcolorid() {
-        return goodcolorid;
-    }
+	public Integer getGoodsizeid() {
+		return goodsizeid;
+	}
 
-    public void setGoodcolorid(Integer goodcolorid) {
-        this.goodcolorid = goodcolorid;
-    }
+	public void setGoodsizeid(Integer goodsizeid) {
+		this.goodsizeid = goodsizeid;
+	}
 
-    public Integer getGoodsizeid() {
-        return goodsizeid;
-    }
+	public String getGoodtiaoxinma() {
+		return goodtiaoxinma;
+	}
 
-    public void setGoodsizeid(Integer goodsizeid) {
-        this.goodsizeid = goodsizeid;
-    }
+	public void setGoodtiaoxinma(String goodtiaoxinma) {
+		this.goodtiaoxinma = goodtiaoxinma;
+	}
 
-    public Integer getGooddetailscount() {
-        return gooddetailscount;
-    }
+	public Integer getGooddetailscount() {
+		return gooddetailscount;
+	}
 
-    public void setGooddetailscount(Integer gooddetailscount) {
-        this.gooddetailscount = gooddetailscount;
-    }
+	public void setGooddetailscount(Integer gooddetailscount) {
+		this.gooddetailscount = gooddetailscount;
+	}
 
-    public String getRemark1() {
-        return remark1;
-    }
+	public String getRemark() {
+		return remark;
+	}
 
-    public void setRemark1(String remark1) {
-        this.remark1 = remark1 == null ? null : remark1.trim();
-    }
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getRemark1() {
+		return remark1;
+	}
+
+	public void setRemark1(String remark1) {
+		this.remark1 = remark1;
+	}
+    
+    
+   
 }

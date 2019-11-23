@@ -1,5 +1,8 @@
 package com.accp.mapper;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 import com.accp.domain.Goodcolor;
 
 public interface GoodcolorMapper {
@@ -14,4 +17,7 @@ public interface GoodcolorMapper {
     int updateByPrimaryKeySelective(Goodcolor record);
 
     int updateByPrimaryKey(Goodcolor record);
+    
+    @Select("SELECT * FROM `goodcolor` WHERE goodcolor.`goodcololoveid`<>0 AND goodcolorname=#{goodcolorname}")
+    Goodcolor  selectcolor(@Param("goodcolorname") String goodcolorname);
 }

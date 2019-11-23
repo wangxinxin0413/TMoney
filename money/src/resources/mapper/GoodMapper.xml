@@ -41,7 +41,7 @@
       #{goodcostprice,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.domain.Good" >
+  <insert id="insertSelective" parameterType="com.accp.domain.Good" useGeneratedKeys="true" keyProperty="goodid">
     insert into good
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="goodid != null" >

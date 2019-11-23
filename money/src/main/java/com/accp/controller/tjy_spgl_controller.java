@@ -52,6 +52,7 @@ public class tjy_spgl_controller {
 	@RequestMapping("/del")
 	@ResponseBody
      public void deleteByPrimaryKey(Integer gooddetailsid){
+		System.out.println("删除"+gooddetailsid);
     	 service1.deleteByPrimaryKey(gooddetailsid);
      }
 }

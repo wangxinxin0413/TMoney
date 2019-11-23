@@ -36,11 +36,17 @@
       <if test="gooddetailsid != null" >
         gooddetailsid,
       </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
       <if test="goodcolorid != null" >
         goodcolorid,
       </if>
       <if test="goodsizeid != null" >
         goodsizeid,
+      </if>
+      <if test="goodtiaoxinma != null" >
+        goodtiaoxinma,
       </if>
       <if test="gooddetailscount != null" >
         gooddetailscount,
@@ -48,7 +54,7 @@
       <if test="remark != null" >
         remark,
       </if>
-      <if test="remark1 != null" >
+       <if test="remark1 != null" >
         remark1,
       </if>
     </trim>
@@ -56,14 +62,20 @@
       <if test="gooddetailsid != null" >
         #{gooddetailsid,jdbcType=INTEGER},
       </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
       <if test="goodcolorid != null" >
         #{goodcolorid,jdbcType=INTEGER},
       </if>
       <if test="goodsizeid != null" >
         #{goodsizeid,jdbcType=INTEGER},
       </if>
+      <if test="goodtiaoxinma != null" >
+        #{goodtiaoxinma,jdbcType=VARCHAR},
+      </if>
       <if test="gooddetailscount != null" >
-        #{gooddetailscount,jdbcType=INTEGER},
+        #{gooddetailscount,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},

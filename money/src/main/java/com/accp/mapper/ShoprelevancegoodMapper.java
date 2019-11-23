@@ -6,4 +6,5 @@ public interface ShoprelevancegoodMapper {
     int insert(Shoprelevancegood record);
 
     int insertSelective(Shoprelevancegood record);
+    
 }

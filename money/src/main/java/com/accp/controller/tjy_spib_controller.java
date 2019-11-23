@@ -26,7 +26,6 @@ public class tjy_spib_controller {
 	@RequestMapping("/all")
 	@ResponseBody
 	public List<Goodtype> selectAll(){
-		System.out.println("ssssswwwwewewewewewewewe");
 		return service.selectAll();
 	}
 	

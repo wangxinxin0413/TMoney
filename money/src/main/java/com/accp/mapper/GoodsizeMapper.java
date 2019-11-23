@@ -1,5 +1,7 @@
 package com.accp.mapper;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.accp.domain.Goodsize;
 
 public interface GoodsizeMapper {
@@ -14,4 +16,7 @@ public interface GoodsizeMapper {
     int updateByPrimaryKeySelective(Goodsize record);
 
     int updateByPrimaryKey(Goodsize record);
-}
+    
+    @Select("SELECT * FROM `goodsize` WHERE  goodsizename=#{goodsizename}")
+    Goodsize selectsize(String goodsizename);
+ }
