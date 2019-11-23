@@ -221,13 +221,20 @@
       remark1 = #{remark1,jdbcType=VARCHAR}
     where Memberid = #{memberid,jdbcType=INTEGER}
   </update>
-  <select id="queryAllXinxi" resultType="com.accp.domain.MemberLO" >
-    SELECT m.`Memberid`,m.`Membername`,m.`Memberphone`,m.`Memberlevelid`,Memberlevelname,cishu,zongshu,m.Membermoney,m.`Memberintegral`,m.`Memberdate` FROM `member` m
-LEFT JOIN memberlevel ON m.`Memberlevelid`=memberlevel.`Memberlevelid`
+  <select id="queryAllXinxi" resultType="com.accp.domain.MemberLO" parameterType="java.lang.String">
+   SELECT m.Memberid,m.Membername,m.Memberphone,m.Memberlevelid,Memberlevelname,cishu,zongshu,m.Membermoney,m.Memberintegral,m.Memberdate FROM member m
+LEFT JOIN memberlevel ON m.Memberlevelid=memberlevel.Memberlevelid
 LEFT JOIN ((
 SELECT Memberid,COUNT(orderid)AS cishu,SUM(totalmoney) AS zongshu FROM `order`
 GROUP BY Memberid
-)AS dd) ON dd.Memberid=m.`Memberid`
+)AS dd) ON dd.Memberid=m.Memberid WHERE 1=1
+<if test="memberlevelname != '全部等级' ">
+AND Memberlevelname = #{memberlevelname,jdbcType=VARCHAR}
+</if>
+<if test="like != ''" >
+AND (m.Membername LIKE CONCAT('%',#{like,jdbcType=VARCHAR},'%') OR m.Memberphone LIKE CONCAT('%',#{like,jdbcType=VARCHAR},'%'))
+</if>
+ 
 
   </select>
 </mapper>

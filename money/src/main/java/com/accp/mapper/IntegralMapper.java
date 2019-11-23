@@ -16,4 +16,8 @@ public interface IntegralMapper {
     int updateByPrimaryKey(Integral record);
     
     Integral queryIntegral();
+    
+    int updateRemark(String remark);
+    
+    int updateIntegral(double integralratio);
 }

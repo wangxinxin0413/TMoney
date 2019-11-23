@@ -265,6 +265,17 @@
 				dataType:"json",
 				success:function(res){
 					$("#jf").val(res.integralratio);
+					if(res.remark=="0"){
+						$("#open").attr("class","x");
+						$("#close").attr("class","xx");
+						$("#jf").removeAttr("disabled");
+						$("#submit").removeAttr("disabled");
+					}else{
+						$("#open").attr("class","xx");
+						$("#close").attr("class","x");
+						$("#jf").attr("disabled","disabled");
+						$("#submit").attr("disabled","disabled");
+					}
 				}
 			})
 		})
@@ -274,14 +285,32 @@
 				$("#close").attr("class","x");
 				$("#jf").attr("disabled","disabled");
 				$("#submit").attr("disabled","disabled");
+				$.ajax({
+					url:"[[@{/jf/updateRemark?remark=1}]]",
+					type:"get",
+					data:{},
+					dataType:"json",
+					success:function(res){
+						location.href="[[@{tiao?htmlt=member_integer}]]";
+					}
+				})
 			}else{
 				$("#open").attr("class","x");
 				$("#close").attr("class","xx");
 				$("#jf").removeAttr("disabled");
 				$("#submit").removeAttr("disabled");
+				$.ajax({
+					url:"[[@{/jf/updateRemark?remark=0}]]",
+					type:"get",
+					data:{},
+					dataType:"json",
+					success:function(res){
+						location.href="[[@{tiao?htmlt=member_integer}]]";
+					}
+				})
 			}
 		})
-		/* $("#submit").click(function(){
+		$("#submit").click(function(){
 			var jf = $("#jf").val();
 			$.ajax({
 				url:"[[@{/jf/updateIntegral?integralratio=}]]"+jf,
@@ -289,10 +318,10 @@
 				data:{},
 				dataType:"json",
 				success:function(res){
-					
+					location.href="[[@{tiao?htmlt=member_integer}]]";
 				}
 			})
-		}) */
+		})
 	</script>
 
 </html>

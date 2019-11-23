@@ -21,4 +21,18 @@ public class wxx_jf_controller {
 		return ser.queryIntegral();
 	}
 	
+	//修改积分设置状态
+	@RequestMapping("/updateRemark")
+	@ResponseBody
+	public int updateRemark(String remark){
+		return ser.updateRemark(remark);
+	}
+	
+	//修改积分
+	@RequestMapping("/updateIntegral")
+	@ResponseBody
+	public int updateIntegral(double integralratio){
+		return ser.updateIntegral(integralratio);
+	}
+	
 }

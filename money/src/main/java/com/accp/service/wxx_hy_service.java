@@ -30,9 +30,9 @@ public class wxx_hy_service {
 	}
 	
 	//查询所有会员信息、
-	public PageInfo<Member> queryAllXinxi(int pageNum,int pageSize){
+	public PageInfo<Member> queryAllXinxi(int pageNum,int pageSize,String memberlevelname,String like){
 		PageHelper.startPage(pageNum, pageSize);
-		List<Member> list = Mdao.queryAllXinxi();
+		List<Member> list = Mdao.queryAllXinxi(memberlevelname,like);
 		PageInfo<Member> page = new PageInfo<Member>(list);
 		return page;
 	}

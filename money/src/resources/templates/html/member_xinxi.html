@@ -222,7 +222,7 @@
 											<span class="title">会员信息</span>
 											<div class="searchArea">
 												<div class="btn-div">
-													<a href="javascript:;" class="btn btn-success">
+													<a href="javascript:;" class="btn btn-success" data-toggle="modal" data-target="#addUserDialog">
 														添加会员
 													</a>
 												</div>
@@ -232,12 +232,12 @@
 												<a href="javascript:;" class="btn btn-default">批量导入</a>
 											</div>
 											<div class="list search">
-												<input class="inputtext" type="text" placeholder="查找">
-												<a href="javascript:;" class="search-btn"></a>
+												<input class="inputtext" id="like" type="text" placeholder="查找">
+												<a href="javascript:;" onclick="goPage(1,2)" class="search-btn"></a>
 											</div>
 											<div class="list">
 												<select name="" id="sel" class="form-control">
-													<option value="全部等级">全部等级</option>
+													<option value="全部等级" onclick="goPage(1,2)">全部等级</option>
 												</select>
 
 											</div>
@@ -342,6 +342,66 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Modal添加会员 -->
+	<div class="modal fade addUserDialog dialog " id="addUserDialog" tabindex="-1" role="dialog" aria-spanledby="myModalspan">
+	  <div class="modal-dialog" role="document" style="width:780px;">
+	    <div class="modal-content">
+	      <div class="modal-header" style="background-color: #f4f5f9;">
+	        <button type="button" class="close" data-dismiss="modal" aria-span="Close"><span aria-hidden="true">&times;</span></button>
+	        <h3 class="modal-title" id="myModalspan">添加会员</h3>
+	      </div>
+	      <div class="modal-body" style="height:290px;">
+	      	
+	      	<div class="dialog_bd clearfix">
+
+				<div class="list"><span><em>*</em>手　机</span><input type="text" maxlength="11" value="" class="inputText" name="mobile"></div>
+				<div class="list"><span><em>*</em>名　称</span><input type="text" maxlength="15" value="" class="inputText" name="nick"></div>
+				<div class="list">
+					<span>等　级</span>
+					<div >
+						<select name="viptypeid">
+							<option>请选择等级</option>
+						</select>
+					</div>
+				</div>
+				<div class="list"><span>密　码</span><input type="password" maxlength="16" value="" class="inputText" name="password"></div>
+				<div class="list addressList CA_Area">
+					<span>地　址</span>
+					<form class="form-inline">
+				      <div data-toggle="distpicker">
+				        <div class="form-group">
+				          <label class="sr-only" for="province2">Province</label>
+				          <select class="form-control" id="province2" data-province="---- 选择省 ----"></select>
+				        </div>
+				        <div class="form-group">-
+				          <label class="sr-only" for="city2">City</label>
+				          <select class="form-control" id="city2" data-city="---- 选择市 ----"></select>
+				        </div>
+				        <div class="form-group">-
+				          <label class="sr-only" for="district2">District</label>
+				          <select class="form-control" id="district2" data-district="---- 选择区 ----"></select>
+				        </div>
+				      </div>
+				    </form>
+					
+				</div>
+				
+				<div class="list" style="width:450px;">
+					<span>街　道</span>
+					<input style="width:370px;" type="text" maxlength="16" value="" name=" " class="inputText">
+				</div>
+			
+				</div>
+	      	
+	      </div>
+	      <div class="modal-footer" style="text-align: center;background-color: #f4f5f9;">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add()">确定</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 		<!--脚步-->
 		<div class="footer" style="margin-top: 15px;">
 			<p>Copyright © 2010-2019 POSO2O. All Rights Reserved.</p>
@@ -349,15 +409,19 @@
 	</body>
 	<script type="text/javascript">
 		var pages="";
+		//分页
 		function goPage(pageNum,pageSize){
+			var memberlevelname =$("#sel").val();
+			
+			var like = $("#like").val();
 			$.ajax({
-				url:"[[@{/hy/queryAllXinxi?pageNum=}]]"+pageNum+"&pageSize="+pageSize,
+				url:"[[@{/hy/queryAllXinxi?pageNum=}]]"+pageNum+"&pageSize="+pageSize+"&memberlevelname="+memberlevelname+"&like="+like,
 				type:"get",
 				dataType:"json",
 				success:function(res){
 					$("tbody").html("");
 					$.each(res.list,function(i,obj){
-						var t = "<tr><td>"+(i+1)+"</td><td>"+obj.membername+"</td><td>"+obj.memberphone +"</td><td>"+obj.memberlevelname +"</td><td>"+obj.cishu +"</td><td>"+obj.zongshu +"</td><td>"+obj.membermoney +"</td><td>"+obj.memberintegral +"</td><td>"+obj.memberdate +"</td></tr>";
+						var t = "<tr><td>"+(i+1)+"</td><td>"+obj.membername+"</td><td>"+obj.memberphone +"</td><td>"+obj.memberlevelname +"</td><td>"+obj.cishu +"</td><td>"+obj.zongshu +"</td><td>"+obj.membermoney +"</td><td>"+obj.memberintegral +"</td><td>"+obj.memberdate +"</td><td><a href='javascript:;'>编辑</a></td></tr>";
 						$("tbody").append(t);
 					})
 					pages=res.pages;
@@ -377,7 +441,7 @@
 			})
 			
 		}
-		
+		//根据输入页面数跳转至相应页面
 		function tiao(){
 			var num = $("#sl").val();
 			if(num>=1&&num<=pages){
@@ -389,7 +453,7 @@
 			
 		    
 		}
-		
+		//初始化查询
 		function init(){
 			$.ajax({
 				url:"[[@{/hy/queryAllLevel}]]",
@@ -397,16 +461,30 @@
 				data:{},
 				dataType:"json",
 				success:function(res){
-					alert(res);
 					$.each(res,function(i,obj){
-						var t = "<option value='+obj.memberlevelname+'>"+obj.memberlevelname+"</option>";
+						var t = "<option value='"+obj.memberlevelname+"' onclick='goPage(1,2)'>"+obj.memberlevelname+"</option>";
 						$("#sel").append(t);
 					})
 					goPage(1,2);
 				}
 			})
 		}
-		
+		//根据条件查询
+		function getLevel(){
+			var memberlevelname =$("#sel").val();
+			
+			var like = $("like").val();
+			
+			$.ajax({
+				url:"[[@{/hy/queryByLike?memberlevelname=}]]"+memberlevelname+"&like="+like,
+				type:"get",
+				data:{},
+				dataType:"json",
+				success:function(res){
+					
+				}
+			})
+		}
 		
 	</script>
 

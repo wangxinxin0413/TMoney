@@ -169,10 +169,10 @@
 				<div class="navArea clearfix text-center">
 					<ul>
 						<li>
-							<a href="new_file.html">店铺</a>
+							<a th:href="@{tiao?htmlt=store_management}" >店铺</a>
 						</li>
 						<li>
-							<a href="new_file1.html">商品</a>
+							<a th:href="@{tiao?htmlt=good_splb}" >商品</a>
 						</li>
 						<li>
 							<a href="#">库存</a>
@@ -184,7 +184,7 @@
 							<a href="#">报表</a>
 						</li>
 						<li class="current">
-							<a href="#">会员</a>
+							<a th:href="@{tiao?htmlt=member_xinxi}">会员</a>
 						</li>
 					</ul>
 				</div>
@@ -195,19 +195,19 @@
 							<div class="navList clearfix text-center" style="height: 600px;margin:0 -15.5px;width:180px;background-color:#F3F3F3;">
 								<ul style="margin-top: -10px;">
 									<li data-id="dianpo1">
-										<a href="#">会员信息</a>
+										<a th:href="@{tiao?htmlt=member_xinxi}">会员信息</a>
 									</li>
 									<li data-id="dianpo2">
-										<a href="#">等级设置</a>
+										<a th:href="@{tiao?htmlt=member_level}">等级设置</a>
 									</li>
 									<li data-id="dianpo3">
-										<a href="#">积分设置</a>
+										<a th:href="@{tiao?htmlt=member_integer}">积分设置</a>
 									</li>
 									<li data-id="goods4" class="active">
-										<a href="#">充值抵扣</a>
+										<a th:href="@{tiao?htmlt=member_deduction}">充值抵扣</a>
 									</li>
 									<li data-id="goods5">
-										<a href="#">成交记录</a>
+										<a th:href="@{tiao?htmlt=member_chengjiaojilu}">成交记录</a>
 									</li>
 
 								</ul>

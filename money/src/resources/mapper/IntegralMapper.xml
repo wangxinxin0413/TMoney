@@ -82,4 +82,19 @@
   <select id="queryIntegral" resultType="com.accp.domain.Integral">
   	select * from integral;
   </select>
+  
+  <update id="updateRemark" parameterType="java.lang.String" >
+    update integral
+    <set >
+        remark = #{remark,jdbcType=VARCHAR}
+    </set>
+    where integralid = 1
+  </update>
+  <update id="updateIntegral" parameterType="java.lang.Double" >
+    update integral
+    <set >
+        Integralratio = #{integralratio,jdbcType=DOUBLE}
+    </set>
+    where integralid = 1
+  </update>
 </mapper>

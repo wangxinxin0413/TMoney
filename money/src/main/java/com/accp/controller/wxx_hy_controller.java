@@ -35,8 +35,8 @@ public class wxx_hy_controller {
 	//查询所有会员信息
 	@RequestMapping("/queryAllXinxi")
 	@ResponseBody
-	public PageInfo<Member> queryAllXinxi(int pageNum,int pageSize){
-		return ser.queryAllXinxi(pageNum, pageSize);
+	public PageInfo<Member> queryAllXinxi(int pageNum,int pageSize,String memberlevelname,String like){
+		return ser.queryAllXinxi(pageNum, pageSize,memberlevelname,like);
 	}
 	
 }
